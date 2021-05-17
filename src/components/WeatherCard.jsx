@@ -17,13 +17,20 @@ const StyledHeader = styled.p`
   justify-content: center;
 `
 const StyledTemperatureContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 48px;
   font-weight: bold;
   text-align: center;
-  padding: 20px
+  padding: 20px;
+`
+const StyledIcon = styled.img`
+  height: 80px;
+  width: 80px;
 `
 
-const WeatherCard = ({ cityName, temperature, weather }) => {
+const WeatherCard = ({ cityName, temperature, weather, weatherDescription, icon }) => {
   return(
       <StyledCard>
         <StyledHeader>
@@ -34,6 +41,10 @@ const WeatherCard = ({ cityName, temperature, weather }) => {
         </StyledTemperatureContainer>
         <StyledTemperatureContainer>
           {weather}
+          <StyledIcon src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="icon" />
+        </StyledTemperatureContainer>
+        <StyledTemperatureContainer>
+          {weatherDescription}
         </StyledTemperatureContainer>
       </StyledCard>
   )

@@ -5,9 +5,11 @@ import Home from './pages/Home';
 import "./App.css";
 
 function App() {
-  const [latitude, setLatitude] = useState(0);
-  const [longitude, setLongitude] = useState(0);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   const [weather, setWeather] = useState("");
+  const [weatherDescription, setWeatherDescription] = useState("")
+  const [icon, setIcon] = useState("")
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState("");
 
@@ -27,6 +29,8 @@ function App() {
       setTemperature(res.data.main.temp);
       setCityName(res.data.name);
       setWeather(res.data.weather[0].main);
+      setWeatherDescription(res.data.weather[0].description)
+      setIcon(res.data.weather[0].icon)
       console.log(res.data);
     } catch (err) {
       console.error(err);
@@ -43,6 +47,8 @@ function App() {
           cityName={cityName}
           temperature={temperature}
           weather={weather}
+          weatherDescription={weatherDescription}
+          icon={icon}
         />
     </div>
   );

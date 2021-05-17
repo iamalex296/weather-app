@@ -23,7 +23,7 @@ const StyledInput = styled.input`
   padding: 5px;
   margin-bottom: 20px;
 `
-const Home = ({ cityName, temperature, weather }) => {
+const Home = ({ cityName, temperature, weather, weatherDescription, icon }) => {
   return(
     <StyledContainer>
       <StyledInput placeholder="Select City..." />
@@ -31,6 +31,8 @@ const Home = ({ cityName, temperature, weather }) => {
         cityName={cityName}
         temperature={temperature}
         weather={weather}
+        weatherDescription={weatherDescription}
+        icon={icon}
       />
     </StyledContainer>
   )

@@ -4,7 +4,7 @@ import Home from './pages/Home';
 
 import "./App.css";
 
-function App() {
+const App = () => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [weather, setWeather] = useState("");
@@ -12,6 +12,7 @@ function App() {
   const [icon, setIcon] = useState("")
   const [temperature, setTemperature] = useState(0);
   const [cityName, setCityName] = useState("");
+  const [inputValue, setInputValue] = useState("")
 
   const savePositionToState = (position) => {
     setLatitude(position.coords.latitude);
@@ -20,7 +21,7 @@ function App() {
 
   const fetchWeather = async () => {
     try {
-      await window.navigator.geolocation.getCurrentPosition(
+      await navigator.geolocation && window.navigator.geolocation.getCurrentPosition(
         savePositionToState
       );
       const res = await axios.get(
@@ -29,11 +30,11 @@ function App() {
       setTemperature(res.data.main.temp);
       setCityName(res.data.name);
       setWeather(res.data.weather[0].main);
-      setWeatherDescription(res.data.weather[0].description)
-      setIcon(res.data.weather[0].icon)
+      setWeatherDescription(res.data.weather[0].description);
+      setIcon(res.data.weather[0].icon);
       console.log(res.data);
     } catch (err) {
-      console.error(err);
+      console.error('error', err);
     }
   };
 
@@ -43,13 +44,20 @@ function App() {
 
   return (
     <div className="app">
-        <Home 
-          cityName={cityName}
-          temperature={temperature}
-          weather={weather}
-          weatherDescription={weatherDescription}
-          icon={icon}
-        />
+      <Home
+        setTemperature={setTemperature}
+        cityName={cityName}
+        temperature={temperature}
+        weather={weather}
+        setWeather={setWeather}
+        weatherDescription={weatherDescription}
+        setWeatherDescription={setWeatherDescription}
+        icon={icon}
+        setIcon={setIcon}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        setCityName={setCityName}
+      />
     </div>
   );
 }

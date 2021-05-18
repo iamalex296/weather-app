@@ -39,6 +39,7 @@ const SearchInput = ({
           setInputValue('');
       } catch(err) {
         console.log('err',err)
+        alert('There is not any city on that name, please write correctly...')
       }
     }
   }

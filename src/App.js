@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Home from './pages/Home';
+import Home from "./pages/Home";
 
 import "./App.css";
 
 const key = "4a5cddb39f8559c3da0ee96d61420547";
 
 const App = () => {
-  const [coordinates, setCoordinates] = useState({latitude:"", longitude:''})
+  const [coordinates, setCoordinates] = useState({latitude:"", longitude:""})
   const [weather, setWeather] = useState("");
   const [weatherDescription, setWeatherDescription] = useState("")
   const [icon, setIcon] = useState("")

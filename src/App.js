@@ -7,8 +7,7 @@ import "./App.css";
 const key = "4a5cddb39f8559c3da0ee96d61420547";
 
 const App = () => {
-  const [latitude, setLatitude] = useState("");
-  const [longitude, setLongitude] = useState("");
+  const [coordinates, setCoordinates] = useState({latitude:"", longitude:''})
   const [weather, setWeather] = useState("");
   const [weatherDescription, setWeatherDescription] = useState("")
   const [icon, setIcon] = useState("")
@@ -17,8 +16,7 @@ const App = () => {
   const [inputValue, setInputValue] = useState("")
 
   const savePositionToState = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
+    setCoordinates({ latitude: position.coords.latitude, longitude: position.coords.longitude })
   };
 
   useEffect(() => {
@@ -28,7 +26,7 @@ const App = () => {
           savePositionToState
         );
         const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`
+          `https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${key}`
         );
         setTemperature(res.data.main.temp);
         setCityName(res.data.name);
@@ -41,7 +39,7 @@ const App = () => {
       }
     };
     fetchWeather();
-  }, [latitude, longitude]);
+  }, [coordinates.latitude, coordinates.longitude,]);
 
   return (
     <div className="app">

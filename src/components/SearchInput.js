@@ -30,6 +30,7 @@ const SearchInput = ({
     if (event.key === "Enter") {
       try {
         const result = await axios.get(`${api.base}weather?q=${inputValue}&units=metric&APPID=${api.key}`)
+          // console.log('result', result)
           setTemperature(result.data.main.temp);
           setCityName(result.data.name)
           setWeather(result.data.weather[0].main);

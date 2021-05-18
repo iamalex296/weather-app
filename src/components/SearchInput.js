@@ -11,7 +11,6 @@ const StyledInput = styled.input`
   padding: 5px;
   margin-bottom: 20px;
 `
-
 const api = {
   key: "4a5cddb39f8559c3da0ee96d61420547",
   base: "https://api.openweathermap.org/data/2.5/"

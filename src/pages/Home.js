@@ -14,21 +14,20 @@ const StyledContainer = styled.div`
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 5px black;
-`
-
-const Home = ({ 
+` 
+const Home = ({
   cityName,
-  temperature, 
-  setTemperature, 
-  weather, 
-  setWeather, 
-  weatherDescription, 
-  setWeatherDescription, 
-  icon, 
-  setIcon, 
-  inputValue, 
-  setInputValue, 
-  setCityName, 
+  temperature,
+  setTemperature,
+  weather,
+  setWeather,
+  weatherDescription,
+  setWeatherDescription,
+  icon,
+  setIcon,
+  inputValue,
+  setInputValue,
+  setCityName,
 }) => {
 
   return(
